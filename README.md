@@ -43,8 +43,8 @@ lights - The python web app
 
 ## Third party libraries added to the project
 
-Adafruit_WS2801 - python library to control WS2801 LED lights
-    * Downloaded a fork with a bug fix from https://github.com/HeMan/Adafruit_Python_WS2801
+Adafruit_WS2801 - python library to control WS2801 LED lights.
+    Downloaded a fork with a bug fix from https://github.com/HeMan/Adafruit_Python_WS2801
 
 Bootstrap - https://getbootstrap.com/
 
