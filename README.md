@@ -30,24 +30,26 @@ green values when setting colors.
 
 ## Project layout
 
-    ```docker``` - Dockerfile and associated files for running on the Raspberry Pi
-    ```docker_x86``` - Dockerfile and associated files for running on an x86 machine
-    ```lights``` - The python web app
-        ```Adafruit_WS2801``` - python library to control WS2801 LED lights (included locally because it uses a forked version)
-        ```lights``` - python web app
-        ```templates``` - HTML templates
-        ```var``` - var data (e.g. log file)
-        ```web``` - static web files (e.g. css/js files)
+```
+docker - Dockerfile and associated files for running on the Raspberry Pi
+docker_x86 - Dockerfile and associated files for running on an x86 machine
+lights - The python web app
+    Adafruit_WS2801 - python library to control WS2801 LED lights (included locally because it uses a forked version)
+    lights - python web app
+    templates - HTML templates
+    var - var data (e.g. log file)
+    web - static web files (e.g. css/js files)
+```
 
 ## Third party libraries added to the project
 
-    Adafruit_WS2801 - python library to control WS2801 LED lights
-        Downloaded a fork with a bug fix from https://github.com/HeMan/Adafruit_Python_WS2801
-    
-    Bootstrap - https://getbootstrap.com/
+Adafruit_WS2801 - python library to control WS2801 LED lights
+    Downloaded a fork with a bug fix from https://github.com/HeMan/Adafruit_Python_WS2801
 
-    jQuery - http://jquery.com/
+Bootstrap - https://getbootstrap.com/
 
-    jQuery MiniColors Plugin - https://github.com/claviska/jquery-minicolors
+jQuery - http://jquery.com/
 
-    rangeslider.js - https://github.com/andreruffert/rangeslider.js
+jQuery MiniColors Plugin - https://github.com/claviska/jquery-minicolors
+
+rangeslider.js - https://github.com/andreruffert/rangeslider.js
