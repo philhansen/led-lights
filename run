@@ -1,0 +1,68 @@
+#! /bin/bash
+# Run Raspberry Pi container
+# Phil Hansen 2016-11-06
+
+basedir=$(cd $(dirname $0); pwd)
+cd $basedir
+
+PORT=80
+ARCHITECTURE=$(dpkg --print-architecture)
+
+function usage()
+    {
+    cat << _EOT_
+Usage: $(basename $0) [-ch] [-p <port>]
+Options:
+    -c CLI mode: connect to the container at the bash terminal
+    -p Port, default $PORT
+    -h This message
+
+_EOT_
+    exit 1;
+    }
+
+while getopts ":chp:" opt; do
+    case $opt in
+        h)  
+            usage
+            exit 2
+            ;; 
+        c)
+            CLI=Y
+            ;;
+        p)
+            PORT=${OPTARG}
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+# remove old container
+docker rm lights > /dev/null 2>&1
+
+# when running on the raspberry pi we need to add the --privileged flag so the 
+# container can access the GPIO pins
+EXTRA=
+if [ $ARCHITECTURE == "armhf" ]; then
+    EXTRA=--privileged
+fi
+
+# cli
+if [ ! -z $CLI ]; then
+    docker run --rm -it \
+        --name lights \
+        -p $PORT:80 \
+        $EXTRA \
+        -v $basedir:/pi/ \
+        lights bash
+else
+    docker run \
+        --name lights \
+        -p $PORT:80 \
+        $EXTRA \
+        -v $basedir:/pi/ \
+        -d lights
+fi

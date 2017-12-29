@@ -1,0 +1,16 @@
+.button-wrapper .btn {
+    margin-bottom: 5px;
+}
+
+.vertical-spacing-after {
+    margin-bottom: 5px;
+}
+
+.vertical-spacing-before {
+    margin-top: 20px;
+}
+
+.minicolors input[type=hidden] + .minicolors-swatch {
+    width: 100px;
+    height: 40px;
+}

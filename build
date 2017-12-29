@@ -1,0 +1,15 @@
+#! /bin/bash
+# Build lights image
+# Phil Hansen, 2016-11-06
+
+basedir=$(cd $(dirname $0); pwd)
+cd $basedir
+ARCHITECTURE=$(dpkg --print-architecture)
+
+# running on raspberry pi
+if [ $ARCHITECTURE == "armhf" ]; then
+    docker build -t lights docker/
+# running on an x86 machine
+else
+    docker build -t lights docker_x86/
+fi

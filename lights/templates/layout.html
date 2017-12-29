@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ g.title }}</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/rangeslider.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/jquery.minicolors.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/default.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+    <h1>{{ g.title }}</h1>
+    {% block body %}{% endblock %}
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/rangeslider.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.minicolors.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/default.js') }}"></script>
+  </body>
+</html>

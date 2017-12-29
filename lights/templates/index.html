@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="row">
+    <div class="col">
+      <div class="card border-primary mb-3">
+        <h3 class="card-header text-primary">All On/Off</h3>
+        <div class="card-body">
+          <div class="row">
+            <div class="col text-center">
+              <button type="button" id="on" class="btn btn-lg btn-success mb-2">On</button>
+            </div>
+            <div class="col text-center">
+              <button type="button" id="off" class="btn btn-lg btn-danger">Off</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-primary mb-3">
+        <h3 class="card-header text-primary">Color</h3>
+        <div class="card-body">
+          <div class="row">
+            <div class="col text-center mb-2">
+              Select: <input type="hidden" id="color_picker" value="{{ g.color }}">
+            </div>
+            <div class="col text-center">
+                <button type="button" id="random_color" class="btn btn-lg btn-secondary mb-2">Random</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span id="rgb_display"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card border-success mb-3">
+    <h3 class="card-header text-success">Sliders</h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h3>Bottom to Top</h3>
+          <input type="range" id="bottom_to_top" min="-1" max="159" step="1" value="-1">
+          <div class="help-block"></div>
+        </div>
+        <div class="col-sm-12 text-center">
+          <h3>Top to Bottom</h3>
+          <input type="range" id="top_to_bottom" min="0" max="160" step="1" value="160">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card border-info mb-3">
+    <h3 class="card-header text-info">Patterns</h3>
+    <div class="card-body">
+      <div class="row">
+        {% for pattern in patterns %}
+        <div class="col-xs-6 col-md-4 text-center button-wrapper">
+          <button type="button" class="btn btn-lg btn-info btn-pattern" data-pattern="{{ pattern }}">{{ display[pattern] }}</button>
+        </div>
+        {% endfor %}
+        <div class="col-xs-6 col-md-4 text-center button-wrapper">
+          <button type="button" class="btn btn-lg btn-info btn-pattern" data-pattern="all_random">All</button>
+        </div>
+      </div>
+      <div class="row vertical-spacing-before">
+        <div class="col-md-6 text-center">
+          <div class="input-group vertical-spacing-after">
+            <span class="input-group-addon" id="basic-addon1">Delay</span>
+            <input type="text" class="form-control" value="0.05" id="delay" aria-describedby="basic-addon1">
+          </div>
+        </div>
+        <div class="col-md-6 text-center">
+          <div class="input-group vertical-spacing-after">
+            <span class="input-group-addon" id="basic-addon1">Pause</span>
+            <input type="text" class="form-control" value="1" id="pause" aria-describedby="basic-addon1">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

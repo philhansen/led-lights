@@ -1,0 +1,14 @@
+# Config for LED Lights
+# Phil Hansen, 28 December 2017
+# Copyright Notice
+
+[general]
+# total number of pixels (32 leds per meter)
+pixel_count = 160
+
+# set to True to designate that the LED lights are RBG (not RGB)
+# this will swap the blue and green values when setting colors
+is_rbg = False
+
+[logging]
+level = DEBUG
