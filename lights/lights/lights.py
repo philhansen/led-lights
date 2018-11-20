@@ -188,7 +188,7 @@ class LightsController(object):
                 os.waitpid(LightsController.process.pid, 0)
             except OSError:
                 pass
-            except Exception, e:
+            except Exception as e:
                 logging.exception('Error in stop_existing_process')
     
 # Define all light patterns

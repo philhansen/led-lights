@@ -2,7 +2,7 @@
 # Phil Hansen, October 22, 2016
 # Copyright Notice
 
-import ConfigParser
+import configparser
 import logging
 import os.path
 
@@ -15,7 +15,7 @@ path_templates = os.path.join(path, 'templates')
 path_web = os.path.join(path, 'web')
 
 # load config file
-config = ConfigParser.ConfigParser()
+config = configparser.ConfigParser()
 config.read(os.path.join(path, '../config.ini'))
 
 # total number of pixels
