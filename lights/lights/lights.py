@@ -203,20 +203,23 @@ def all_random(delay=0, pause=0.5, rounds=0):
     LightsController.off(stop_existing=False)
     done = False
     current_round = rounds
-    while not done:
-        # get random pattern
-        pattern = random.sample(patterns, 1)[0]
-        # get random values
-        pattern_delay = random.uniform(0.005, 0.05)
-        pattern_pause = random.uniform(0.5, 5)
-        pattern_rounds = random.randint(3, 6)
-        logging.debug("Doing %s delay %s pause %s rounds %d", pattern, str(pattern_delay), str(pattern_pause), pattern_rounds)
-        globals()[pattern](pattern_delay, pattern_pause, pattern_rounds)
-        time.sleep(delay)
-        if rounds > 0:
-            current_round -= 1
-            if current_round <= 0:
-                done = True
+    try:
+        while not done:
+            # get random pattern
+            pattern = random.sample(patterns, 1)[0]
+            # get random values
+            pattern_delay = random.uniform(0.005, 0.05)
+            pattern_pause = random.uniform(0.5, 5)
+            pattern_rounds = random.randint(3, 6)
+            logging.debug("Doing %s delay %s pause %s rounds %d", pattern, str(pattern_delay), str(pattern_pause), pattern_rounds)
+            globals()[pattern](pattern_delay, pattern_pause, pattern_rounds)
+            time.sleep(delay)
+            if rounds > 0:
+                current_round -= 1
+                if current_round <= 0:
+                    done = True
+    except Exception as e:
+        logging.exception('Error in all_random')
     
 def chase_up(delay=0.1, pause=0.5, rounds=0):
     LightsController.off(stop_existing=False)
@@ -343,7 +346,7 @@ def random_sets(delay=0.1, pause=0.5, rounds=0):
     current_round = rounds
     while not done:
         # get a random half from the available lights
-        lights = random.sample(pattern_lights, config.pixel_count / 2)
+        lights = random.sample(pattern_lights, config.pixel_count // 2)
         LightsController.on(lights, stop_existing=False)
         time.sleep(pause)
         LightsController.off(lights, stop_existing=False)
@@ -356,7 +359,7 @@ def random_on_off(delay=0.1, pause=0.5, rounds=0):
     LightsController.off(stop_existing=False)
     done = False
     current_round = rounds
-    lights = pattern_lights
+    lights = list(pattern_lights)
     while not done:
         random.shuffle(lights)
         for light in lights:
